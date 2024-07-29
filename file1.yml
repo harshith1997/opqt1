@@ -7,6 +7,20 @@ Resources:
       ImageId: "ami-0427090fd1714168b"
       InstanceType: "t2.micro"
       KeyName: "workingserver"
+      SecurityGroupIds:
+        - !GetAtt secGroup.GroupId
       Tags:
         - Key: "Name"
           Value: "cfserver"
+
+  secGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupName: "SSH_and_HTTP"
+      GroupDescription: "Allow SSH and HTTP access"
+      VpcId: "vpc-0da68141b12e10377"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
