@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "1st server"
+Resources:
+  EC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId: "ami-0427090fd1714168b"
+      InstanceType: "t2.micro"
+      KeyName: "workingserver"
+      Tags:
+        - Key: "Name"
+          Value: "cfserver"
